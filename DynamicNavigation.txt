@@ -10,7 +10,7 @@ category: Anything with the category of "Main" is setup to show on when the layo
 layout: The layout name that the items will navigate to. You would leave this blank for any "header" categories that would need sub-items. Spelling is important here. If the name of the layout is misspelled then the script will not navigate to another layout and it's setup to not give an error so that it captures the exception.
 sortOrder: The field that allows categories to be sorted in an order other than the record created order.
 visibleTo: The scripts are setup so that if you wanted to have a specific menu item only visible to only specific privilege sets. By inputing the name of a privilege set other privilege sets would not see the menu item.
-platform: Setup for platform filtering. It is currently configured so that you could have a separate set of menus that would show on specific platforms. This is based on the get(SystemPlatform) function. 
+platform: Setup for platform filtering. It is currently configured so that you could have a separate set of menus that would show on specific platforms. This is based on the get(SystemPlatform) function. The Platform Values button at the top of the window will show you the values and corresponding platform.
 
 The scripts
 
