@@ -38,5 +38,7 @@ The first Header menu and sub-item has been created. By repeating this process i
 
 Keep in mind, because this utilizes "go to layout (By Name)," it will not regress gracefully if a layout in the navigation is renamed without being updated. It will instead, do nothing and provide no error. So if a layout is renamed, be sure to update the name of the layout in the Navigation::layout field.
 
+The last Step is to provide a link to the Navigation layout. This will automatically fire the List is filtered as you have defined in the @Navigation Layout.
+
 That's about all I can think of at the moment. I tried to keep this as simple as possible. I hope it proves helpful to someone.
 
