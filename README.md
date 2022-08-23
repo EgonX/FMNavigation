@@ -1,0 +1,46 @@
+# FMNavigation
+FileMaker Custom Dynamic Navigation
+
+This is a dynamic, customizable navigation system that works with one table, two layouts, and three scripts.
+
+First you will see that navigation layout pre-populated with some sample data. The layout has 6 objects on the visible portion of the layout. At the top are 2 items on top of each other.  Then on the right is a close window button. I did this in case there is a need to close the navigation without having to go back to the main menu. In the body of the layout is the Title button and an Arrow. The arrow self hides if there are not related sub items. Out to the right are the searchable fields to allow the scripts to work.
+
+Then at the bottom, there is a gear button that will open the @Navigation layout. The layout has 6 fields.
+
+Fields
+title: This is the title that will show on the navigation layout.
+category: Anything with the category of "Main" is setup to show on when the layout first loads and serves as the top menu. Category is how the groups for the find are built and allows the > button to appear to indicate that the item has a sub-menu.
+layout: The layout name that the items will navigate to. You would leave this blank for any "header" categories that would need sub-items. Spelling is important here. If the name of the layout is misspelled then the script will not navigate to another layout and it's setup to not give an error so that it captures the exception.
+sortOrder: The field that allows categories to be sorted in an order other than the record created order.
+visibleTo: The scripts are setup so that if you wanted to have a specific menu item only visible to only specific privilege sets. By inputing the name of a privilege set other privilege sets would not see the menu item.
+platform: Setup for platform filtering. It is currently configured so that you could have a separate set of menus that would show on specific platforms. This is based on the get(SystemPlatform) function. The Platform Values button at the top of the window will show you the values and corresponding platform.
+
+The scripts
+
+The Navigation.onLayoutEnter script loads the menu items.
+
+The Navigation script is what either navigates to sub menus or navigates to the specified layout.
+
+The @Navigation.OnLayoutEnter script ensures that when the card window for @Navigation is opened it shows all records.
+
+So by populating the records with records and the appropriate fields, you can build menus, sub-menus, maintain sort order.
+
+So to start creating your own menu click on the gear at the bottom of the layout. This opens the @Navigation layout in a card window. There is a button on the layout to create a new record. Let's assume a menu item for "Sales Orders" under a "Sales" top menu going to the layout "SalesOrders" is needed. 
+
+1. Input "Sales" into the Navigation::title field.
+2. Input "Main" into the Navigation::category field.
+3. Leave the Navigation::layout field blank, set the sort order to 1.
+4. Create a New record.
+5. Input "Sales Orders" into the Navigation::title field.
+6. Input "Sales" into the Navigation::category field.
+7. Input "SalesOrders" into the Navigation::layout field.
+8. Input a 1 into the Navigation::sortOrder field.
+9. Click the "Save and Update" button. This runs the Navigation.onLayoutEnter script with a script parameter of 1 which will tell the script to close the card window.
+
+The first Header menu and sub-item has been created. By repeating this process it's possible to create an unlimited number and complexity of menu items.
+
+Keep in mind, because this utilizes "go to layout (By Name)," it will not regress gracefully if a layout in the navigation is renamed without being updated. It will instead, do nothing and provide no error. So if a layout is renamed, be sure to update the name of the layout in the Navigation::layout field.
+
+The last Step is to provide a link to the Navigation layout. This will automatically fire the List is filtered as you have defined in the @Navigation Layout.
+
+Please feel free to ask any questions. I will update this document with any questions and answers that are posted or sent to me.
